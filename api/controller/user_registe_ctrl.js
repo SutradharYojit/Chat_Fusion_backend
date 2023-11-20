@@ -48,16 +48,16 @@ const loginUser = async (req, res, next) => {
                     }
                     if (passSuccess) {
                         const jwtToken = jwt.sign({ email: req.body.email }, "secret");
-    
+
                         return res.status(201).json({ message: "Login Successfully", success: true, userId: result.id, token: jwtToken });
                     }
                     return res.status(401).json({ message: "UnAuthorised User", success: false });
-    
+
                 });
             });
 
         } else {
-            console.log("Error logging user " );
+            console.log("Error logging user ");
             return res.status(401).json({ message: "UnAuthorised User", success: false });
         }
 
