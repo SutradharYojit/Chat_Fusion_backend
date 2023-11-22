@@ -18,14 +18,14 @@ router.post('/send', (req, res, next) => {
     }).then((message) => {
         console.log(message);
         return res.status(201).json({ success: true, message });
-    })
+    });
 });
 
 router.get('/getMessage', (req, res, next) => {
+
     console.log(req.body);
     const chatId = req.body.chatId;
     chatModel.findAll({ where: { chatId: chatId }, order: [['createdAt', 'DESC']] }).then((message) => {
-        console.log(message);
         return res.status(200).json([...message])
     })
 });
